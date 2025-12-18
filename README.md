@@ -1,9 +1,9 @@
 sequenceDiagram
     participant User as 用户
     participant Browser as 浏览器
-    participant RouteController as RouteController
-    participant RouteService as RouteService
-    participant RouteDao as RouteDao
+    participant RouteController as RouteController参与者RouteController作为RouteController
+    participant RouteService as RouteService参与者RouteService作为RouteService
+    participant RouteDao as RouteDao参与者RouteDao作为RouteDao
     participant Database as 数据库
     participant Redis as Redis缓存
 
@@ -35,9 +35,9 @@ sequenceDiagram
       Browser->>CategoryController: 请求分类列表(/category/fisequenceDiagram
     participant User as 用户
     participant Browser as 浏览器
-    participant RouteController as RouteController
-    participant RouteService as RouteService
-    participant RouteDao as RouteDao
+    participant RouteController as RouteController参与者RouteController作为RouteController
+    participant RouteService as RouteService参与者RouteService作为RouteService
+    participant RouteDao as RouteDao参与者RouteDao作为RouteDao
     participant Database as 数据库
     participant Redis as Redis缓存
 

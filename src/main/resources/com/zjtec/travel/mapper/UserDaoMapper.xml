@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zjtec.travel.dao.UserDao">
+	<!-- 根据用户名查询用户 -->
+	<select id="findByUserName" parameterType="string" resultType="com.zjtec.travel.domain.User">
+		SELECT * FROM tab_user WHERE username = #{username}
+	</select>
+
+	<!-- 根据用户名查询已激活用户 -->
+	<select id="findActiveUserByUserName" parameterType="string" resultType="com.zjtec.travel.domain.User">
+		SELECT * FROM tab_user WHERE username = #{username} AND status = 'Y'
+	</select>
+
+	<!-- 保存用户信息 -->
+	<insert id="save" parameterType="com.zjtec.travel.domain.User">
+		INSERT INTO tab_user(
+			username, password, email, name, telephone, birthday, sex, code, status, role,salt
+		) VALUES (
+					 #{username}, #{password}, #{email}, #{name}, #{telephone}, #{birthday}, #{sex}, #{code}, #{status}, #{role},#{salt}
+				 )
+	</insert>
+
+	<!-- 检查用户名或邮箱是否存在 -->
+	<select id="existUserNameOrEmail" resultType="boolean">
+		SELECT COUNT(*) > 0
+		FROM tab_user
+		WHERE username = #{username} OR email = #{email}
+	</select>
+
+	<!-- 激活用户（更新状态为已激活） -->
+	<update id="activeUser">
+		UPDATE tab_user
+		SET status = 'Y', code = NULL
+		WHERE username = #{username} AND code = #{code}
+	</update>
+</mapper>

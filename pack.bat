@@ -1,0 +1,1 @@
+7z a .\travel-stu.zip .\.idea\ .\src\ .gitignore pom.xml README.txt travel-stu.iml
